@@ -36,6 +36,10 @@ These challenges are designed to teach security professionals to systematically 
 
 You can set the environment variables for the Azure OpenAI endpoint in the `.env` file. Please use the `.env.example` file as a template.
 
+### Azure Foundry configuration
+
+Create a deployment named `text-embedding-ada-002` ussing the model `text-embedding-ada-002`
+
 ### Running the Playground Labs
 
 The easiest way to run the playground labs is to use the [Docker Compose](https://docs.docker.com/compose/) file included in this repository. This will start all the components needed to run the playground environment with a set of 12 challenges.
