@@ -31,7 +31,7 @@ These challenges are designed to teach security professionals to systematically 
 - [Docker](https://docs.docker.com/get-docker/) installed
 - [Python 3.8+](https://www.python.org/downloads/) installed
 - [Azure OpenAI Endpoint](https://azure.microsoft.com/en-us/products/ai-services/openai-service) endpoint with an api-key
-    - Create a deployment named `text-embedding-ada-002` ussing the model `text-embedding-ada-002`
+    - An Azure Foundry deployment named `text-embedding-ada-002` ussing the model `text-embedding-ada-002`
 
 ### Environment Variables
 
