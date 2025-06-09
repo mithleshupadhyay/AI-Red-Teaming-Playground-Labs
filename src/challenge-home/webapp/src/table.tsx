@@ -2,23 +2,23 @@
 // Licensed under the MIT License.
 
 import {
-  Button,
-  Spinner,
-  Table,
-  TableBody,
-  TableCell,
-  TableCellLayout,
-  TableColumnDefinition,
-  TableColumnId,
-  TableHeader,
-  TableHeaderCell,
-  TableRow,
-  createTableColumn,
-  useTableFeatures,
-  useTableSort
+    Button,
+    Spinner,
+    Table,
+    TableBody,
+    TableCell,
+    TableCellLayout,
+    TableColumnDefinition,
+    TableColumnId,
+    TableHeader,
+    TableHeaderCell,
+    TableRow,
+    createTableColumn,
+    useTableFeatures,
+    useTableSort
 } from "@fluentui/react-components";
 import {
-  DocumentRegular, OpenRegular
+    DocumentRegular, OpenRegular
 } from "@fluentui/react-icons";
 import * as React from "react";
 
@@ -104,6 +104,14 @@ export const SortControlled = () => {
 
     const getUrl = (id: number, url?: string) => {
       if (url) {
+        const urlObj = new URL(url);
+        if (
+          (urlObj.hostname === "localhost" || urlObj.hostname === "127.0.0.1") &&
+          window.location.hostname !== urlObj.hostname
+        ) {
+          urlObj.hostname = window.location.hostname;
+          return urlObj.toString();
+        }
         return url;
       } else {
         return `/challenge/${id}/`;
