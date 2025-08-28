@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: docker/challenge-home/Dockerfile
     ports:
-      - 127.0.0.1:5000:5000
+      - 127.0.0.1:${APP_PORT:-15000}:5000
     environment:
       - AUTH_KEY=${AUTH_KEY}
       - SECRET_KEY=${SECRET_KEY}
@@ -38,7 +38,7 @@ services:
       - Challenge__ChallengeHome__SecretKey=${SECRET_KEY}
   
       - Planner__Model=${AOAI_MODEL_NAME}
-      - AllowedOrigins=http://localhost:5000
+      - AllowedOrigins=http://localhost:${APP_PORT:-15000}
       
       - Kestrel__Endpoints__Http__Url=http://0.0.0.0:4000
       - PrometheusTelemetry__Endpoint=http://0.0.0.0:4001
