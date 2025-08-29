@@ -101,24 +101,24 @@ export const SortControlled = () => {
   }, []);
 
   const openChallenge = (id: number, url?: string) => {
+
     const getUrl = (id: number, url?: string) => {
-      if (!url) return `/challenge/${id}/`;
-
-      const urlObj = new URL(url, window.location.href);
-      const isLoopback = ["localhost", "127.0.0.1", "::1", "0.0.0.0"].includes(urlObj.hostname);
-
-      // Match the current page's protocol to avoid mixed-content issues
-      urlObj.protocol = window.location.protocol;
-
-      // If the target is loopback but we're accessed via a public host, rewrite host
-      if (isLoopback && window.location.hostname !== urlObj.hostname) {
-        urlObj.hostname = window.location.hostname;
+      if (url) {
+        const urlObj = new URL(url);
+        if (
+          (urlObj.hostname === "localhost" || urlObj.hostname === "127.0.0.1") &&
+          window.location.hostname !== urlObj.hostname
+        ) {
+          urlObj.hostname = window.location.hostname;
+          return urlObj.toString();
+        }
+        return url;
+      } else {
+        return `/challenge/${id}/`;
       }
-
-      return urlObj.toString();
     };
-
-    // Check if cookie needs to open in a new tab
+    
+    //Check if cookie needs to open in a new tab
     if (document.cookie.includes("home-new-tab=true")) {
       window.open(getUrl(id, url), '_blank');
     } else {
