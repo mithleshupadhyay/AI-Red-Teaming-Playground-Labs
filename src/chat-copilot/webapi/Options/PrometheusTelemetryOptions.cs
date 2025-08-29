@@ -7,5 +7,5 @@ public class PrometheusTelemetryOptions
 {
     public const string PropertyName = "PrometheusTelemetry";
 
-    public string Endpoint { get; set; } = "http://localhost:14001";
+    public string Endpoint { get; set; } = "http://localhost:4001";
 }
